@@ -1,0 +1,20 @@
+Package: tfidfPubMed
+Type: Package
+Title: R Package Template
+Version: 0.1.0
+Author: Justin Lee
+Maintainer: Justin Lee <chunhin.lee@mail.utoronto.ca>
+Description: tfidfPubMed is a package for providing straightforward textmining functionality for text data taken from PubMed.
+License: Justin Lee
+Encoding: UTF-8
+LazyData: true
+Suggests:
+    testthat
+RoxygenNote: 6.1.0
+Imports: easyPubMed,
+    pubmed.mineR,
+    plyr,
+    tm,
+    ggplot2,
+    visualTest,
+    proto
