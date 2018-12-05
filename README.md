@@ -2,7 +2,9 @@
 
 ## Project package for BCB410 Applied Bioinformatics
 
-This project revolves around a Tf-Idf (Term Frequency, Inverse Document Frequency) package for abstracts of scientific papers taken from PubMed.  This package provides data structures and functions to ease and simplify data transformations surrounding Tf-Idf processes, and provides direct transformations onto PubMed documents.  This package is designed for extensive console programming and experimentation.
+This project revolves around a Tf-Idf (Term Frequency, Inverse Document Frequency) package for abstracts of scientific papers taken from PubMed.  This package provides data structures and functions to ease and simplify data transformations surrounding Tf-Idf processes, and provides direct transformations onto PubMed documents.  
+
+This package is designed for extensive console programming and experimentation with scientific papers.  The goal of this package is to provide a broad overview and visualization of text data prior to any extensive model building.  
 
 Install with ```devtools::install_github("jlee118/tmine")```
 
