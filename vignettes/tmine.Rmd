@@ -16,6 +16,10 @@ Additional features that are generated are mapped and added back to their raw da
 devtools::github_install("jlee118/tmine")
 
 ````
+## R Version
+````
+3.5.1
+````
 
 ## Dependencies
 
@@ -38,7 +42,7 @@ The first step in any workflow involving "tmine" is to first search PubMed for a
 ````
 abstracts_df <- get_pubmed_abstracts("cancer stem cells")
 
-#To access the example dataframe that only has "get_pubmed_abstracts" run on it:
+# To access the example dataframe that only has "get_pubmed_abstracts" run on it:
 arabidopsis_data
 ````
 
@@ -54,7 +58,15 @@ Once the TF-IDF values are calculated for the subset of papers in the dataframe,
 
 
 ````
-#Two dimensional plot of the TF-IDF values of each paper
-#Match the colour to the legend, and the number to the row where the paper resides in
+# Two dimensional plot of the TF-IDF values of each paper
+# Match the colour to the legend, and the number to the row where the paper resides in
 reduce_and_plot(abstracts_with_tfidf)
+````
+
+Additionally, a Shiny application can be run for visualizing the TF-IDF scores for each paper in the dataframe.  The visualization is customizable and interactive, allowing for the adjustments for the number of words to display and the selection of a specific paper.
+The Shiny application exists in the "shiny" folder.
+
+````
+# Type directory of the shiny application
+runApp("shiny")
 ````
