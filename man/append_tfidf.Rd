@@ -7,7 +7,8 @@
 append_tfidf(abstracts_dataframe)
 }
 \arguments{
-\item{abstracts_dataframe}{A DataFrame returned from the \code{get_pubmed_abstracts} function.  Must already have tf-idf scores calculated from \code{append_tfidf}}
+\item{abstracts_dataframe}{A DataFrame returned from the \code{get_pubmed_abstracts} function.
+Must already have tf-idf scores calculated from \code{append_tfidf}}
 }
 \value{
 A DataFrame.
@@ -16,7 +17,8 @@ A DataFrame.
 \code{append_tfidf} Calculates Tf-Idf scores for text from PubMed abstracts.
 }
 \details{
-\code{append_tfidf} Given a dataframe returned from the \code{get_pubmed_abstracts} function, calculate a vector of tf-idf scores for each abstract, and appends it to the dataframe.
+\code{append_tfidf} Given a dataframe returned from the \code{get_pubmed_abstracts} function,
+calculate a vector of tf-idf scores for each abstract, and appends it to the dataframe.
 }
 \examples{
 abstracts_with_tfidf <- append_tfidf(abstracts_df)

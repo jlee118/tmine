@@ -2,7 +2,8 @@
 #'
 #' \code{get_pubmed_abstracts} Returns information on abstracts of documents retrieved from PubMed
 #'
-#' \code{get_pubmed_abstracts} Takes a query string and returns a dataframe containing the text of the abstract and other information on documents returned from PubMed.
+#' \code{get_pubmed_abstracts} Takes a query string and returns a dataframe containing the text
+#' of the abstract and other information on documents returned from PubMed.
 #'
 #' @param query_string A string to be searched on PubMed
 #' @param retmax Maximum number of results returned
@@ -36,6 +37,8 @@ get_pubmed_abstracts <- function(query_string,retmax=20) {
   final_df <- plyr::ldply(datalist,data.frame)
   final_df$firstname <- NULL
   final_df$lastname <- NULL
+  final_df$ID <- rownames(final_df)
   return(final_df)
 }
 
+#[END]

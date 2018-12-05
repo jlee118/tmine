@@ -18,7 +18,8 @@ A DataFrame.
 \code{get_pubmed_abstracts} Returns information on abstracts of documents retrieved from PubMed
 }
 \details{
-\code{get_pubmed_abstracts} Takes a query string and returns a dataframe containing the text of the abstract and other information on documents returned from PubMed.
+\code{get_pubmed_abstracts} Takes a query string and returns a dataframe containing the text
+of the abstract and other information on documents returned from PubMed.
 }
 \examples{
 query_string <- gene expression cancer"

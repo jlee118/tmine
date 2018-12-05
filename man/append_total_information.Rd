@@ -7,7 +7,8 @@
 append_total_information(abstracts_dataframe)
 }
 \arguments{
-\item{abstracts_dataframe}{A DataFrame returned from the \code{get_pubmed_abstracts} function.  Must already have tf-idf scores calculated from \code{append_tfidf}}
+\item{abstracts_dataframe}{A DataFrame returned from the \code{get_pubmed_abstracts} function.
+Must already have tf-idf scores calculated from \code{append_tfidf}}
 }
 \value{
 A DataFrame.
@@ -16,7 +17,8 @@ A DataFrame.
 \code{append_total_information} Adds up total tf-idf scores among all abstracts.
 }
 \details{
-\code{append_total_information} Given a dataframe returned from the \code{get_pubmed_abstracts} function that already has tf-idf scores calculated from \code{append_tfidf}, append a column to the DataFrame of the total tf-idf scores.
+\code{append_total_information} Given a dataframe returned from the \code{get_pubmed_abstracts} function that
+already has tf-idf scores calculated from \code{append_tfidf},append a column to the DataFrame of the total tf-idf scores.
 }
 \examples{
 abstracts_df_with_total <- append_top_words(abstracts_df_with_tfidf)

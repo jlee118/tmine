@@ -2,8 +2,12 @@
 #'
 #' \code{append_total_information} Adds up total tf-idf scores among all abstracts.
 #'
-#' \code{append_total_information} Given a dataframe returned from the \code{get_pubmed_abstracts} function that already has tf-idf scores calculated from \code{append_tfidf}, append a column to the DataFrame of the total tf-idf scores.
-#' @param abstracts_dataframe A DataFrame returned from the \code{get_pubmed_abstracts} function.  Must already have tf-idf scores calculated from \code{append_tfidf}
+#' \code{append_total_information} Given a dataframe returned from the \code{get_pubmed_abstracts} function that
+#' already has tf-idf scores calculated from \code{append_tfidf},append a column to the DataFrame of the total tf-idf scores.
+#'
+#' @param abstracts_dataframe A DataFrame returned from the \code{get_pubmed_abstracts} function.
+#' Must already have tf-idf scores calculated from \code{append_tfidf}
+#'
 #' @return A DataFrame.
 #' @seealso \code{get_pubmed_abstracts} \code{\link{append_tfidf}}
 #' @export
@@ -19,3 +23,4 @@ append_total_information <- function(abstracts_dataframe) {
 }
 
 
+#[END]

@@ -36,7 +36,8 @@ abstracts_with_tfidf$tf_idf[1][[1]][1:10]
 # If we isolate a vectorm we can plot it as well:
 
 vec1 <- abstracts_with_tfidf$tf_idf[1][[1]]
-plot_word_score(vec1)
+title <- abstracts_with_tfidf$title[1]
+plot_word_score(vec1, title)
 
 # Lastly, depending on the dataset searched, a PCA reduction may reveal some interesting results on how related documents are for one another.  Every dot is colour coded differently and represents a different document within the dataframe.
 reduce_and_plot(abstracts_with_tfidf)

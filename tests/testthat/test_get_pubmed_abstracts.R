@@ -19,7 +19,7 @@ test_that("30 documents are returned by default with specification",  {
 })
 
 test_that("correct number of columns in dataframe",  {
-  expect_equal(length(colnames(abstracts_df)), 12)
+  expect_equal(length(colnames(abstracts_df)), 13)
 })
 
 test_that("the abstract text is of character data type" , {

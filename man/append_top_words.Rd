@@ -7,7 +7,8 @@
 append_top_words(abstracts_dataframe, num_words = 30)
 }
 \arguments{
-\item{abstracts_dataframe}{A DataFrame returned from the \code{get_pubmed_abstracts} function.  Must already have tf-idf scores calculated from \code{append_tfidf}}
+\item{abstracts_dataframe}{A DataFrame returned from the \code{get_pubmed_abstracts} function.
+Must already have tf-idf scores calculated from \code{append_tfidf}}
 }
 \value{
 A DataFrame.
@@ -16,7 +17,9 @@ A DataFrame.
 \code{append_tfidf} Finds words with the top tf-idf scores for each abstract entry in the dataframe.
 }
 \details{
-\code{append_tfidf} Given a dataframe returned from the \code{get_pubmed_abstracts} function that already has tf-idf scores calculated from \code{append_tfidf}, append a column to the DataFrame of the words with the top tf-idf scores
+\code{append_tfidf} Given a dataframe returned from the \code{get_pubmed_abstracts} function that
+already has tf-idf scores calculated from \code{append_tfidf}, append a column to the DataFrame
+of the words with the top tf-idf scores.
 }
 \examples{
 abstracts_with_topwordsf <- append_top_words(abstracts_df_with_tfidf)

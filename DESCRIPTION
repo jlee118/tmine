@@ -1,4 +1,4 @@
-Package: tfidfPubMed
+Package: tmine
 Type: Package
 Title: R Package Template
 Version: 0.1.0
@@ -11,10 +11,13 @@ LazyData: true
 Suggests:
     testthat
 RoxygenNote: 6.1.0
-Imports: easyPubMed,
+Imports:
+    easyPubMed,
     pubmed.mineR,
     plyr,
     tm,
     ggplot2,
     visualTest,
-    proto
+    proto,
+    DT,
+    shiny

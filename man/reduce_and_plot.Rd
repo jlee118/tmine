@@ -7,13 +7,16 @@
 reduce_and_plot(abstracts_dataframe)
 }
 \arguments{
-\item{abstracts_dataframe}{DataFrame produced from \code{get_pubmed_abstracts}.  Must have tf-idf vectors already from \code{append_tfidf}.}
+\item{abstracts_dataframe}{DataFrame produced from \code{get_pubmed_abstracts}.
+Must have tf-idf vectors already from \code{append_tfidf}.}
 }
 \description{
 \code{plot_word_score} Produces a scatter plot for all documents with Tf-Idf vectors.
 }
 \details{
-\code{plot_word_score}Given a dataframe from the \code{get_pubmed_abstracts} function with tf-idf weights from the \code{append_tfidf} function, produce a scatterplot using a PCA reduced coordinate of all abstracts present in the DataFrame.
+\code{plot_word_score}Given a dataframe from the \code{get_pubmed_abstracts} function with
+tf-idf weights from the \code{append_tfidf} function, produce a scatterplot using a PCA
+reduced coordinate of all abstracts present in the DataFrame.
 }
 \examples{
 reduce_and_plot(abstracts_df_with_tfidf)

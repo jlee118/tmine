@@ -2,8 +2,12 @@
 #'
 #' \code{plot_word_score} Produces a scatter plot for all documents with Tf-Idf vectors.
 #'
-#' \code{plot_word_score}Given a dataframe from the \code{get_pubmed_abstracts} function with tf-idf weights from the \code{append_tfidf} function, produce a scatterplot using a PCA reduced coordinate of all abstracts present in the DataFrame.
-#' @param abstracts_dataframe DataFrame produced from \code{get_pubmed_abstracts}.  Must have tf-idf vectors already from \code{append_tfidf}.
+#' \code{plot_word_score}Given a dataframe from the \code{get_pubmed_abstracts} function with
+#' tf-idf weights from the \code{append_tfidf} function, produce a scatterplot using a PCA
+#' reduced coordinate of all abstracts present in the DataFrame.
+#'
+#' @param abstracts_dataframe DataFrame produced from \code{get_pubmed_abstracts}.
+#' Must have tf-idf vectors already from \code{append_tfidf}.
 #' @seealso \code{get_pubmed_abstracts} \code{\link{append_tfidf}}
 #' @export
 #' @examples
@@ -28,3 +32,5 @@ reduce_and_plot <- function(abstracts_dataframe) {
   #Colour code every point, the legend represents the index number of where that document corresponding to the point lies in the dataframe
   ggplot2::ggplot(plot_data, ggplot2::aes(x=PC1,y=PC2)) + ggplot2::geom_point(ggplot2::aes(colour = factor(name)))
 }
+
+#[END]

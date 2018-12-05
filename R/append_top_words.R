@@ -2,8 +2,13 @@
 #'
 #' \code{append_tfidf} Finds words with the top tf-idf scores for each abstract entry in the dataframe.
 #'
-#' \code{append_tfidf} Given a dataframe returned from the \code{get_pubmed_abstracts} function that already has tf-idf scores calculated from \code{append_tfidf}, append a column to the DataFrame of the words with the top tf-idf scores
-#' @param abstracts_dataframe A DataFrame returned from the \code{get_pubmed_abstracts} function.  Must already have tf-idf scores calculated from \code{append_tfidf}
+#' \code{append_tfidf} Given a dataframe returned from the \code{get_pubmed_abstracts} function that
+#' already has tf-idf scores calculated from \code{append_tfidf}, append a column to the DataFrame
+#' of the words with the top tf-idf scores.
+#'
+#' @param abstracts_dataframe A DataFrame returned from the \code{get_pubmed_abstracts} function.
+#' Must already have tf-idf scores calculated from \code{append_tfidf}
+#'
 #' @return A DataFrame.
 #' @seealso \code{get_pubmed_abstracts} \code{\link{append_tfidf}}
 #' @export
@@ -23,3 +28,5 @@ append_top_words <- function(abstracts_dataframe, num_words=30) {
   }
   return(abstracts_dataframe)
 }
+
+#[END]

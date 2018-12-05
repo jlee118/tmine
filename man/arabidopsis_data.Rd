@@ -4,7 +4,7 @@
 \name{arabidopsis_data}
 \alias{arabidopsis_data}
 \title{PubMed Abstracts corresponding to a search for terms "arabidopsis thaliana gibberellin"}
-\format{An object of class \code{"cross"}; see \code{\link[qtl]{read.cross}}.}
+\format{An object of class \code{"data.frame"};}
 \usage{
 data(arabidopsis_data)
 }
@@ -12,6 +12,7 @@ data(arabidopsis_data)
 Data from function \code{get_pubmed_abstracts} with arguments "arabidopsis thaliana gibberellin", default number of results returned
 }
 \examples{
-data(arabidopsis_data.RData)
+arabidopsis.data$abstract
+names(arabidopsis.data)
 }
 \keyword{datasets}
