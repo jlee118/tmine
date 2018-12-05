@@ -6,10 +6,12 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
+## Summary
+"tmine" provides text mining and data gathering capabilities, as well as simple text analysis for scientific papers obtained from PubMed.  "tmine" achieves these goals by gathering text data from PubMed via query terms, organizing them and storing it as dataframe in one step, cutting out the use for multiple functions and packages normally needed.  Additional functions add features to this dataframe, with the goal of creating an object that is easy to use in a "console coding", experimental setting.  
 
-"tmine"" provides text mining and data gathering capabilities, as well as simple text analysis for scientific papers obtained from PubMed.  "tmine" achieves these goals by gathering text data from PubMed via query terms, organizing them and storing it as dataframe in one step, cutting out the use for multiple functions and packages normally needed.  Additional functions add features to this dataframe, with the goal of creating an object that is easy to use in a "console coding", experimental setting.  
+Additional features that are generated are mapped and added back to their raw data sets in the original dataframe, aiding in creating a clean and organized environment.
 
-Additional features that are generated are mapped and added back to their raw data sets in the original dataframe, aiding in creating a clean and organized environment.  
+One specific goal of this package is to have a console-friendly programming tool for storing and manipulating data.  Since text-mining tasks often involve the development of functions and scripts for processing of data, console experimentation is often done first prior to having a solid script written out.  The data structuress created by this package are meant to aid the experimentation process.  
 
 ## Install
 ````
@@ -36,7 +38,7 @@ devtools::github_install("jlee118/tmine")
 ````
 
 ## Example Workflow
-
+### Searching PubMed
 The first step in any workflow involving "tmine" is to first search PubMed for a set of papers to store as a dataframe.  We will search for "cancer stem cells".  Additionally, there is a also a pre-loaded dataset corresponding to the search terms "arabidopsis thaliana gibberellin".
 
 ````
@@ -45,7 +47,7 @@ abstracts_df <- get_pubmed_abstracts("cancer stem cells")
 # To access the example dataframe that only has "get_pubmed_abstracts" run on it:
 arabidopsis_data
 ````
-
+### Calculating TF-IDF
 This dataframe currently contains standard meta-data associated with scientific papers from PubMed.  This includes the title, author, journal identifier, PubMed identifier, among some others.  At this point, data can already be extracted and processed in different ways, however to access the full extent of "tmine", we will calculate TF-IDF values for the first paper in our dataframe.  
 ````
 abstracts_with_tfidf <- append_tfidf(abstracts_df)
@@ -53,8 +55,22 @@ vec1 <- abstracts_with_tfidf$tf_idf[1][[1]]
 title <- abstracts_with_tfidf$title[1]
 plot_word_score(vec1, title)
 ````
+### Additional Functions
+Once the TF-IDF values are calculated for the subset of papers in the dataframe, the rest of the other functions can be used.  There are a good amount of options, such as calculating similarity between papers, adding total TF-IDF values, or adding a column of the top scoring words for each paper.  
 
-Once the TF-IDF values are calculated for the subset of papers in the dataframe, the rest of the other functions can be used.  There are a good amount of options, such as calculating similarity between papers, adding total TF-IDF values, or adding a column of the top scoring words for each paper.  Additionally, we can apply a two dimensional PCA reduction on the set of TF-IDF values of all the papers and plot them.  Due to the possibly long titles of papers, the legend holds the row number where the specific paper can be found in the dataframe.  
+```
+# Add up totals to get a naive estimation of the "most important paper"
+abstracts_with_totals <- append_total_information(abstracts_with_tfidf)
+
+# Create a column with the top "n" words stored for each paper
+abstracts_with_top_words <- append_top_words(abstracts_with_totals)
+
+# Isolate the TF-IDF vector of a paper, and find the most similar documents to it, along with their similarity scores
+vector <- abstracts_with_top_words$tf_idf[1][[1]]
+results <- get_most_similar(vector,abstracts_with_top_words)
+````
+###PCA Reduce and Plot
+Additionally, we can apply a two dimensional PCA reduction on the set of TF-IDF values of all the papers and plot them.  Due to the possibly long titles of papers, the legend holds the row number where the specific paper can be found in the dataframe.  
 
 
 ````
@@ -62,7 +78,7 @@ Once the TF-IDF values are calculated for the subset of papers in the dataframe,
 # Match the colour to the legend, and the number to the row where the paper resides in
 reduce_and_plot(abstracts_with_tfidf)
 ````
-
+###Shiny
 Additionally, a Shiny application can be run for visualizing the TF-IDF scores for each paper in the dataframe.  The visualization is customizable and interactive, allowing for the adjustments for the number of words to display and the selection of a specific paper.
 The Shiny application exists in the "shiny" folder.
 
@@ -70,3 +86,10 @@ The Shiny application exists in the "shiny" folder.
 # Type directory of the shiny application
 runApp("shiny")
 ````
+
+##Limitations
+While this package is meant to aid in text-mining and exploratory analysis, the models implemented in this package are not built for serious classification tasks.  The TF-IDF model does not take into account semantic structure or work with joint probabilities of sequences of words appearing together, and hence is quite naive.  The accuracy of this model is highly dependent on the data available.  For example, if the subset of papers do not have a lot of words in common, the TF-IDF vectors will be very sparse and similarity and PCA reduction plots will not have much meaning.  Hence why this model is not a good choice for serious classification and prediction tasks.  
+
+However, if a subset of text data is already chosen (say there is already a specific field of study in which you want to investigate), there is a high chance that the subset of papers have groups of words in common.  If one wants to have a broad overview on what these words and papers look like amongst each other, similarity comparisons and plots would be more useful.  
+
+Text-mining tasks often require a large amount of pre-processing and "looking-in" of data prior to any serious model development.  The visualization methods in this package are meant to aid in this process by providing simple views of the text data from PubMed.  
