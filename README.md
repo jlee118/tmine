@@ -27,20 +27,37 @@ The Shiny application is housed in the "shiny" folder, and contains a visualizat
 ## Basic Workflow
 
 ```
-
 # This is an example script of what a normal workflow with this package
 # Tf-Idf Uses: Please Read!
-# The tf-idf model is designed for quick text mining on a SMALL (default set to 20) subset of documents.  This model doesn't reflect grammar structure, attention, or any sophisticated features found on higher end neural network language models.
-# This model also works better on a more focused group of documents, for example a search on a specific research subarea.  Searches like "plant biology" or "cancer" have far too many different papers, research areas, and therefore words
+# The tf-idf model is designed for quick text mining on a SMALL (default set to 20) subset of documents.
+# This model doesn't reflect grammar structure, attention, or any sophisticated features found
+# on higher end neural network language models.
+#
+# This model also works better on a more focused group of documents, for example a search on a
+# specific research subarea.  Searches like "plant biology" or "cancer"
+# have far too many different papers, research areas, and therefore words
 # associated with them, this will cause large amounts of sparsity in the model, making it useless.
-# What the model is good for is quick identification of "key" or "important terms", and to some extent, "important documents",  on a small group of documents containing short text (hence why abstracts are chosen).
-# This model is routinely used in text-based searches in different avenues, and is often good at providing a general overview on text data, or refining search results
-# This package aims to eliminate the large amount of data transoformations usually required to perform small tasks.  This one data structure can provide easier exploration and scripting uses while providing general visualisations with ease.
+#
+# What the model is good for is quick identification of "key" or "important terms",
+# and to some extent, "important documents",  on a small group of documents
+# containing short text (hence why abstracts are chosen).
+#
+# This model is routinely used in text-based searches in different avenues,
+# and is often good at providing a general overview on text data, or refining search results
+#
+# This package aims to eliminate the large amount of data transoformations usually
+# required to perform small tasks.
+# This one data structure can provide easier exploration and scripting uses while
+# providing general visualisations with ease.
 
 
 
 
-# Pick a query term.  Searching for generic terms is quite straightforward, however searching for additional fields including author names, publish dates, journals, would require one to research on PubMed's query formulation for advanced searches.
+# Pick a query term.
+# Searching for generic terms is quite straightforward, however searching for
+# additional fields including author names, publish dates, journals, would require
+# one to research on PubMed's query formulation for advanced searches.
+#
 # Here is a link for advanced search syntax https://www.ncbi.nlm.nih.gov/pubmed/advanced
 # For now, we start with simple searches, this will take a few seconds
 
@@ -62,13 +79,19 @@ abstracts_with_tfidf$tf_idf[1][[1]][1:10]
 # 5.5451774   2.3025851   2.3025851   2.3025851   1.6094379   1.3862944   1.6094379   2.3025851   0.2231436   2.3025851
 
 # There are many words, around 1000 or more
-# Once the tf-idf vectors are loaded, one can do other types of analysis.  Functions for obtaining most similar documents, finding most informative words, finding documents with most information are available as functions in this package.
+# Once the tf-idf vectors are loaded, one can do other types of analysis.
+# Functions for obtaining most similar documents, finding most informative words, finding
+# documents with most information are available as functions in this package.
+#
 # If we isolate a vectorm we can plot it as well:
 
 vec1 <- abstracts_with_tfidf$tf_idf[1][[1]]
 title <- abstracts_with_tfidf$title[1]
 plot_word_score(vec1, title)
 
-# Lastly, depending on the dataset searched, a PCA reduction may reveal some interesting results on how related documents are for one another.  Every dot is colour coded differently and represents a different document within the dataframe.
+# Lastly, depending on the dataset searched, a PCA reduction may reveal some interesting
+# results on how related documents are for one another.
+# Every dot is colour coded differently and represents a different document within the dataframe.
 reduce_and_plot(abstracts_with_tfidf)
+
 ```
