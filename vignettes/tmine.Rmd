@@ -1,0 +1,60 @@
+---
+title: 'tmine: TF-IDF and Text Mining Aid for PubMed Papers'
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{'tmine: TF-IDF and Text Mining Aid for PubMed Papers'}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+"tmine"" provides text mining and data gathering capabilities, as well as simple text analysis for scientific papers obtained from PubMed.  "tmine" achieves these goals by gathering text data from PubMed via query terms, organizing them and storing it as dataframe in one step, cutting out the use for multiple functions and packages normally needed.  Additional functions add features to this dataframe, with the goal of creating an object that is easy to use in a "console coding", experimental setting.  
+
+Additional features that are generated are mapped and added back to their raw data sets in the original dataframe, aiding in creating a clean and organized environment.  
+
+## Install
+````
+devtools::github_install("jlee118/tmine")
+
+````
+
+## Dependencies
+
+````
+    easyPubMed,
+    pubmed.mineR,
+    plyr,
+    tm,
+    ggplot2,
+    visualTest,
+    proto,
+    DT,
+    shiny
+````
+
+## Example Workflow
+
+The first step in any workflow involving "tmine" is to first search PubMed for a set of papers to store as a dataframe.  We will search for "cancer stem cells".  Additionally, there is a also a pre-loaded dataset corresponding to the search terms "arabidopsis thaliana gibberellin".
+
+````
+abstracts_df <- get_pubmed_abstracts("cancer stem cells")
+
+#To access the example dataframe that only has "get_pubmed_abstracts" run on it:
+arabidopsis_data
+````
+
+This dataframe currently contains standard meta-data associated with scientific papers from PubMed.  This includes the title, author, journal identifier, PubMed identifier, among some others.  At this point, data can already be extracted and processed in different ways, however to access the full extent of "tmine", we will calculate TF-IDF values for the first paper in our dataframe.  
+````
+abstracts_with_tfidf <- append_tfidf(abstracts_df)
+vec1 <- abstracts_with_tfidf$tf_idf[1][[1]]
+title <- abstracts_with_tfidf$title[1]
+plot_word_score(vec1, title)
+````
+
+Once the TF-IDF values are calculated for the subset of papers in the dataframe, the rest of the other functions can be used.  There are a good amount of options, such as calculating similarity between papers, adding total TF-IDF values, or adding a column of the top scoring words for each paper.  Additionally, we can apply a two dimensional PCA reduction on the set of TF-IDF values of all the papers and plot them.  Due to the possibly long titles of papers, the legend holds the row number where the specific paper can be found in the dataframe.  
+
+
+````
+#Two dimensional plot of the TF-IDF values of each paper
+#Match the colour to the legend, and the number to the row where the paper resides in
+reduce_and_plot(abstracts_with_tfidf)
+````

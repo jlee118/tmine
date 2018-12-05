@@ -9,7 +9,9 @@ License: Justin Lee
 Encoding: UTF-8
 LazyData: true
 Suggests:
-    testthat
+    testthat,
+    knitr,
+    rmarkdown
 RoxygenNote: 6.1.0
 Imports:
     easyPubMed,
@@ -21,3 +23,4 @@ Imports:
     proto,
     DT,
     shiny
+VignetteBuilder: knitr
